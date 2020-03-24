@@ -3,7 +3,6 @@ const github = require('@actions/github');
 const Filter = require('bad-words'),
 filter = new Filter();
 
-async function run() {
   try { 
       const token = core.getInput('GITHUB_TOKEN');
       const closePermissionCheck = core.getInput('CLOSE_PERMISSION');
@@ -24,28 +23,32 @@ async function run() {
         body = filter.clean(payload.issue.body);
         
         if(body !== payload.issue.body){
-          const issue = await octokit.issues.createComment({owner: repo.owner, repo: repo.repo, issue_number: payload.issue.number, body: message}); 
-          if(issue.status === 200 && closePermission){
-            await octokit.issues.update({owner: repo.owner, repo: repo.repo, issue_number: payload.issue.number, state: 'closed'});
-          }    
+          octokit.issues.createComment({owner: repo.owner, repo: repo.repo, issue_number: payload.issue.number, body: message})
+          .then(()=>{
+            if(closePermission){
+                octokit.issues.update({owner: repo.owner, repo: repo.repo, issue_number: payload.issue.number, state: 'closed'});
+              } 
+          }).catch(e=>{
+            throw e;
+        })
+            
         }
-
-
       }else if(payload && payload.pull_request && payload.pull_request.body){
         body = filter.clean(payload.pull_request.body);
 
         if(body !== payload.pull_request.body){
-          const pr = await octokit.issues.createComment({owner: repo.owner, repo: repo.repo, issue_number: payload.pull_request.number, body: message}); 
-          if(pr.status === 200 && closePermission){
+          octokit.issues.createComment({owner: repo.owner, repo: repo.repo, issue_number: payload.pull_request.number, body: message})
+          .then(()=>{
+                if(closePermission){
             await octokit.issues.update({owner: repo.owner, repo: repo.repo, issue_number: payload.pull_request.number, state: 'closed'});
-          }    
+          }  
+          }).catch(e=>{
+              throw e;
+          })
+          
         }
-
       }
   } 
   catch (error) {
     core.setFailed(error.message);
   }
-}
-
-run();
