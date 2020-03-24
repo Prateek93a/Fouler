@@ -1,0 +1,15 @@
+
+name: 'Fouler'
+description: 'A Github Action to detect Foul words in a PR or an Issue created and optionally close it'
+author: 'Prateek93a'
+inputs:
+  token:              # change this
+    description: 'Your Github Token'
+    required: true
+  close_permission:
+    description: 'Allow the Action to close the PR or the Issue. Write true or false'
+    required: false
+    default: false
+runs:
+  using: 'node12'
+  main: 'index.js'

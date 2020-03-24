@@ -1,0 +1,17 @@
+{
+  "name": "fouler",
+  "version": "1.0.0",
+  "description": "A Github Action to detect foul words in PR or issues created",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prateek93a",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "@actions/github": "^2.1.1",
+    "bad-words": "^3.0.3"
+  },
+  "devDependencies": {}
+}
