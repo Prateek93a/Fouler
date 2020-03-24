@@ -23,8 +23,8 @@ Message that will be displayed if foul words are found. Default `Use of foul wor
 
 ## Example usage
 
-uses: Prateek93a/Fouler
-with:
-   github_token: ${{secrets.TOKEN}}
-   close_permission: true
-   message: Use of foul words detected
+uses: Prateek93a/Fouler  
+with:  
+   github_token: ${{secrets.TOKEN}}    
+   close_permission: true  
+   message: Use of foul words detected  
