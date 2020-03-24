@@ -40,7 +40,7 @@ filter = new Filter();
           octokit.issues.createComment({owner: repo.owner, repo: repo.repo, issue_number: payload.pull_request.number, body: message})
           .then(()=>{
                 if(closePermission){
-            await octokit.issues.update({owner: repo.owner, repo: repo.repo, issue_number: payload.pull_request.number, state: 'closed'});
+                 octokit.issues.update({owner: repo.owner, repo: repo.repo, issue_number: payload.pull_request.number, state: 'closed'});
           }  
           }).catch(e=>{
               throw e;
