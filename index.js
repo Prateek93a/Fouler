@@ -12,12 +12,12 @@ filter = new Filter();
       let body;
       let closePermission;
 
+      console.log(closePermissionCheck);
       if(typeof closePermissionCheck !== 'boolean'){
         closePermission = false;
       }else{
         closePermission = closePermissionCheck;
       }
-
 
       if(payload && payload.issue && payload.issue.body){
         body = filter.clean(payload.issue.body);
