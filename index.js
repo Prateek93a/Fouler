@@ -18,7 +18,7 @@ filter = new Filter();
       }else{
         closePermission = closePermissionCheck;
       }
-
+      console.log(closePermission);
       if(payload && payload.issue && payload.issue.body){
         body = filter.clean(payload.issue.body);
         
