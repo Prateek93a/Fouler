@@ -10,6 +10,10 @@ inputs:
     description: 'Allow the Action to close the PR or the Issue. Write true or false'
     required: false
     default: false
+  message:
+    description: 'Message that gets displayed when foul words are detected'
+    required: false
+    default: 'Use of foul words detected'
 runs:
   using: 'node12'
   main: 'index.js'
