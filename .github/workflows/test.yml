@@ -28,5 +28,6 @@ jobs:
     - name: Fouler
       uses: ./
       with:
-        GITHUB_TOKEN: ${{secrets.TOKEN}}
-        CLOSE_PERMISSION: true 
+        github_token: ${{secrets.TOKEN}}
+        close_permission: true
+        message: Use of foul words detected
