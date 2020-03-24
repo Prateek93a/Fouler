@@ -4,12 +4,12 @@ const Filter = require('bad-words'),
 filter = new Filter();
 
   try { 
-      const token = core.getInput('GITHUB_TOKEN');
-      const closePermissionCheck = core.getInput('CLOSE_PERMISSION');
+      const token = core.getInput('github_token');
+      const closePermissionCheck = core.getInput('close_permission');
+      const message = core.getInput('message');
       const octokit = new github.GitHub(token);
       const { repo, payload } = github.context;
       let body;
-      const message = 'Use of foul words detected';
       let closePermission;
 
       if(typeof closePermissionCheck !== 'boolean'){
