@@ -28,3 +28,10 @@ Message that will be displayed if foul words are found. Default `Use of foul wor
    `github_token: ${{secrets.TOKEN}}`    
    `close_permission: true`  
    `message: Use of foul words detected`  
+
+
+
+
+## License
+
+MIT
